@@ -14,17 +14,21 @@ class Calculator {
   delete() {
     this.currentOperand = this.currentOperand.toString().slice(0, -1)
   }
-
+//
   appendNumber(number) {
+    //elimination of double periods on currentOperand
     if (number === '.' && this.currentOperand.includes('.')) return
     this.currentOperand = this.currentOperand.toString() + number.toString()
   }
 
   chooseOperation(operation) {
+    //elimination of first operator click
     if (this.currentOperand === '') return
+    //previousOperand not undefined
     if (this.previousOperand !== '') {
       this.compute()
     }
+    //transfer value from current to previous
     this.operation = operation
     this.previousOperand = this.currentOperand
     this.currentOperand = ''
